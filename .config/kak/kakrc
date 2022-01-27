@@ -1,0 +1,13 @@
+# Define colorscheme
+colorscheme base16
+
+# Set tabs width to 4
+set-option global tabstop 4
+set-option global indentwidth 4
+
+# Show line numbers
+add-highlighter global/ number-lines -hlcursor
+
+# Enable kak-lsp
+eval %sh{kak-lsp --kakoune -s $kak_session}
+lsp-enable
