@@ -1,6 +1,15 @@
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "robertmeta/plug.kak" noload
 plug "silversquirl/kaklip"
+plug "andreyorst/kaktree" config %{
+	hook global WinSetOption filetype=kaktree %{
+		remove-highlighter buffer/numbers
+		remove-highlighter buffer/matching
+		remove-highlighter buffer/wrap
+		remove-highlighter buffer/show-whitespaces
+	}
+	kaktree-enable
+}
 
 # Define colorscheme
 colorscheme base16
@@ -15,3 +24,11 @@ add-highlighter global/ number-lines -hlcursor
 # Enable kak-lsp
 eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
+
+set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
+
+# Enable kak-lsp for go
+hook global BufWritePre .*[.]go %{
+    try %{ lsp-code-action-sync '^Organize Imports$' }
+    lsp-formatting-sync
+}

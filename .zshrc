@@ -22,12 +22,22 @@ alias reboot='sudo reboot'
 # Color coded ls
 alias ls='ls --color=auto'
 
+# Moving in the filesystem
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# Music
+alias ytmp3="yt-dlp -f 'ba' -x --audio-format mp3"
+
 # Setup prompt
 PROMPT='[%F{011}%1~%f] -> '
 
 # Setup zsh suggestions
 source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
+export SCRIPTS_DIR="$HOME/Scripts/my-scripts"
+
+eval $(thefuck --alias)
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
