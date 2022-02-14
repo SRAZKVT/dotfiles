@@ -13,4 +13,4 @@ Info :
 - Shell : zsh 5.8
 - Wallpaper : [link](https://www.pixiv.net/en/artworks/89446377)
 
-<img src="2022-01-27-202432_1920x1080_scrot.png">
+<img src="Screenshot_20220214_232739.png">
