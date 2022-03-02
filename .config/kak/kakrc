@@ -12,7 +12,7 @@ plug "andreyorst/kaktree" config %{
 }
 
 # Define colorscheme
-colorscheme base16
+colorscheme sarah-colorscheme
 
 # Set tabs width to 4
 set-option global tabstop 4
@@ -20,10 +20,12 @@ set-option global indentwidth 4
 
 # Show line numbers
 add-highlighter global/ number-lines -hlcursor
+add-highlighter global/ wrap -word -indent -marker '  ->  '
 
 # Enable kak-lsp
 eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
+lsp-auto-hover-enable
 
 set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
