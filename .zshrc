@@ -29,8 +29,12 @@ alias ...='cd ../..'
 # Music
 alias ytmp3="yt-dlp -f 'ba' -x --audio-format mp3"
 
+# Random stuff i use a lot
+alias cl="clear"
+
 # Setup prompt
-PROMPT='[%F{011}%1~%f] -> '
+NEWLINE=$'\n'
+PROMPT="[%F{111}%n%f at %F{121}%M%f in %F{011}%1~%f]${NEWLINE}-> "
 
 # Setup zsh suggestions
 source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
