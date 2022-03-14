@@ -8,16 +8,16 @@ bindkey -e
 
 ### ALIASES ###
 # Package management
-alias sysu='sudo xbps-install -Su'
-alias repu='sudo xbps-install -S'
-alias pkgu='sudo xbps-install -u'
-alias install='sudo xbps-install'
-alias uninstall='sudo xbps-remove'
+alias sysu='doas xbps-install -Su'
+alias repu='doas xbps-install -S'
+alias pkgu='doas xbps-install -u'
+alias install='doas xbps-install'
+alias uninstall='doas xbps-remove'
 alias query='xbps-query -Rs'
 
 # System power management
-alias poweroff='sudo poweroff'
-alias reboot='sudo reboot'
+alias poweroff='doas poweroff'
+alias reboot='doas reboot'
 
 # Color coded ls
 alias ls='ls --color=auto'
