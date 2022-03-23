@@ -5,19 +5,31 @@ SAVEHIST=1000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
+### FUNCTIONS ###
+
+
+which_sudo() {
+	if command -v sudo >/dev/null && sudo -l | grep -q -e ' ALL$' -e xbps-install; then
+		echo sudo
+	elif command -v doas >/dev/null && [ -f /etc/doas.conf ]; then
+		echo doas
+	elif [ "$(id -u)" != 0 ]; then
+		echo su
+	fi	
+}
+
 
 ### ALIASES ###
 # Package management
-alias sysu='doas xbps-install -Su'
-alias repu='doas xbps-install -S'
-alias pkgu='doas xbps-install -u'
-alias install='doas xbps-install'
-alias uninstall='doas xbps-remove'
-alias query='xbps-query -Rs'
+alias xsysu="$(which_sudo) xbps-install -Suv"
+alias xpkgu="$(which_sudo) xbps-install -Su"
+alias xrm="$(which_sudo) xbps-remove"
+# alias xi="$(which_sudo) xbps-install -S" -- present in xtools
+# alias xrs="xbps-query -Rs" -- present in xtools
 
 # System power management
-alias poweroff='doas poweroff'
-alias reboot='doas reboot'
+alias poweroff="$(which_sudo) poweroff"
+alias reboot="$(which_sudo) reboot"
 
 # Color coded ls
 alias ls='ls --color=auto'
@@ -38,8 +50,6 @@ PROMPT="[%F{111}%n%f at %F{121}%M%f in %F{011}%1~%f]${NEWLINE}-> "
 
 # Setup zsh suggestions
 source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
-export SCRIPTS_DIR="$HOME/Scripts/my-scripts"
 
 eval $(thefuck --alias)
 
