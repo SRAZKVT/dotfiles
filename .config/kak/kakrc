@@ -1,6 +1,5 @@
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "robertmeta/plug.kak" noload
-plug "silversquirl/kaklip"
 plug "andreyorst/kaktree" config %{
 	hook global WinSetOption filetype=kaktree %{
 		remove-highlighter buffer/numbers
@@ -10,6 +9,9 @@ plug "andreyorst/kaktree" config %{
 	}
 	kaktree-enable
 }
+plug "crizan/kak-rainbower"
+
+map global user y '<a-|>wl-copy<ret>'
 
 # Define colorscheme
 colorscheme sarah-colorscheme
