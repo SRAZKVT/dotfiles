@@ -19,6 +19,22 @@ which_sudo() {
 }
 
 
+is_git_repo() {
+    git -C $(pwd) rev-parse 2> /dev/null
+    if [ $? -eq 0 ]; then
+    	echo true
+    else
+    	echo false
+    fi
+}
+
+get_git_status() {
+    if [ $(is_git_repo) = "true" ]; then
+		echo " - [%F{190}$(basename `git rev-parse --show-toplevel`)%f:%F{red}$(git branch --show-current)%f]"
+		# TODO: Add if local repo is up to date with remote
+    fi
+}
+
 ### ALIASES ###
 # Package management
 alias xsysu="$(which_sudo) xbps-install -Suv"
@@ -43,10 +59,12 @@ alias ytmp3="yt-dlp -f 'ba' -x --audio-format mp3"
 
 # Random stuff i use a lot
 alias cl="clear"
+alias exa="exa --icons"
 
 # Setup prompt
+setopt PROMPT_SUBST
 NEWLINE=$'\n'
-PROMPT="[%F{111}%n%f at %F{121}%M%f in %F{011}%1~%f]${NEWLINE}-> "
+PROMPT="[%F{111}%n%f at %F{121}%M%f in %F{011}%1~%f]\$(get_git_status)${NEWLINE}-> "
 
 # Setup zsh suggestions
 source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
