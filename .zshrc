@@ -64,7 +64,7 @@ alias exa="exa --icons"
 # Setup prompt
 setopt PROMPT_SUBST
 NEWLINE=$'\n'
-PROMPT="[%F{111}%n%f at %F{121}%M%f in %F{011}%1~%f]\$(get_git_status)${NEWLINE}-> "
+PROMPT="%?${NEWLINE}%F{111}%n%f at %F{121}%M%f in %F{011}%1~%f]\$(get_git_status)${NEWLINE}-> "
 
 # Setup zsh suggestions
 source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"

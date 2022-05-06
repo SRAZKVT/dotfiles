@@ -10,6 +10,13 @@ plug "andreyorst/kaktree" config %{
 	kaktree-enable
 }
 plug "crizan/kak-rainbower"
+plug "andreyorst/smarttab.kak"
+
+source "~/Code/KuteForth/kf.kak"
+
+
+add-highlighter global/ regex \b(TODO|FIXME)\b 0:rgb:ff0000+b
+
 
 map global user y '<a-|>wl-copy<ret>'
 
@@ -34,5 +41,8 @@ set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 # Enable kak-lsp for go
 hook global BufWritePre .*[.]go %{
     try %{ lsp-code-action-sync '^Organize Imports$' }
-    lsp-formatting-sync
+}
+
+hook global BufCreate .* %{
+	smarttab
 }
