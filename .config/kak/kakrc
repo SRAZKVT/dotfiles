@@ -17,8 +17,16 @@ source "~/Code/KuteForth/kf.kak"
 
 add-highlighter global/ regex \b(TODO|FIXME)\b 0:rgb:ff0000+b
 
+evaluate-commands %sh{
+	if [ ${XDG_SESSION_TYPE} = 'x11' ]; then
+		# x11
+		echo "map global user y '<a-|>xclip -sel clip<ret>'"
+	else
+		# wayland
+		echo "map global user y '<a-|>wl-copy<ret>'"
+	fi
+}
 
-map global user y '<a-|>wl-copy<ret>'
 
 # Define colorscheme
 colorscheme sarah-colorscheme
