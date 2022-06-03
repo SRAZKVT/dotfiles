@@ -1,16 +1,12 @@
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "robertmeta/plug.kak" noload
-plug "andreyorst/kaktree" config %{
-	hook global WinSetOption filetype=kaktree %{
-		remove-highlighter buffer/numbers
-		remove-highlighter buffer/matching
-		remove-highlighter buffer/wrap
-		remove-highlighter buffer/show-whitespaces
-	}
-	kaktree-enable
-}
+plug "occivink/kakoune-filetree"
 plug "crizan/kak-rainbower"
 plug "andreyorst/smarttab.kak"
+
+plug "evanrelf/number-toggle.kak" config %{
+	  require-module "number-toggle"
+}
 
 source "~/Code/KuteForth/kf.kak"
 
