@@ -60,16 +60,25 @@ alias ytmp3="yt-dlp -f 'ba' -x --audio-format mp3"
 # Random stuff i use a lot
 alias cl="clear"
 alias exa="exa --icons"
+alias exat="exa --tree"
+alias mv="mv -v"
+alias cp="cp -v"
+alias rm="rm -v"
+alias ll="lsd -l"
 
+alias neofetch="hyfetch"
 # Setup prompt
 setopt PROMPT_SUBST
 NEWLINE=$'\n'
-PROMPT="%?${NEWLINE}%F{111}%n%f at %F{121}%M%f in %F{011}%1~%f]\$(get_git_status)${NEWLINE}-> "
+PROMPT="The last command exited with code : [%?]${NEWLINE}[%F{111}%n%f at %F{121}%M%f in %F{011}%1~%f]\$(get_git_status)${NEWLINE}-> "
 
 # Setup zsh suggestions
 source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 eval $(thefuck --alias)
+
+export DENO_INSTALL="/home/$USER/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

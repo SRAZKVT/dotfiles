@@ -1,5 +1,5 @@
 ##
-## sarah-colorscheme by sarah
+## base16.kak by lenormf, modified by sarah
 ##
 
 evaluate-commands %sh{
@@ -8,7 +8,7 @@ evaluate-commands %sh{
     black_light='rgb:1C1C1C'
     cyan_light='rgb:7CB0FF'
     green_dark='rgb:6AB654'
-    grey_dark='rgb:585858'
+    grey_dark='rgb:888888'
     grey_light='rgb:D8D8D8'
     magenta_dark='rgb:AB4642'
     magenta_light='rgb:AB4434'
@@ -27,7 +27,7 @@ evaluate-commands %sh{
         face global operator ${cyan_light}
         face global attribute ${orange_dark}
         face global comment ${grey_dark}
-        face global documentation comment
+        face global documentation string
         face global meta ${orange_light}
         face global builtin default+b
     "
@@ -50,8 +50,8 @@ evaluate-commands %sh{
         face global SecondaryCursor black,white+fg
         face global PrimaryCursorEol black,${cyan_light}+fg
         face global SecondaryCursorEol black,${cyan_light}+fg
-        face global LineNumbers rgb:4F4F4F,${black_lighter}
-        face global LineNumberCursor ${grey_light},rgb:282828+b
+        face global LineNumbers rgb:ffffff,${black_lighter}
+        face global LineNumberCursor ${cyan_light},${black_lighter}
         face global MenuForeground ${grey_light},blue
         face global MenuBackground blue,${grey_light}
         face global MenuInfo ${cyan_light}

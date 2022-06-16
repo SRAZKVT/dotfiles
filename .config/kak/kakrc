@@ -23,6 +23,12 @@ evaluate-commands %sh{
 	fi
 }
 
+# Im too lazy to change in zellij so i change here
+map global insert <a-p> <c-p>
+map global insert <a-n> <c-n>
+
+map global user a '*%s<ret>' -docstring 'select all'
+
 
 # Define colorscheme
 colorscheme sarah-colorscheme
