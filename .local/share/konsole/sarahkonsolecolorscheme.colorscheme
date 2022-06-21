@@ -83,14 +83,17 @@ Color=255,255,255
 Color=252,252,252
 
 [ForegroundFaint]
-Color=239,240,241
-
-[ForegroundIntense]
 Color=255,255,255
 
+[ForegroundIntense]
+Color=239,240,241
+
 [General]
+Anchor=0.5,0.5
 Blur=true
 ColorRandomization=false
 Description=sarahkonsolecolorscheme
-Opacity=0.65
+FillStyle=Tile
+Opacity=1
 Wallpaper=
+WallpaperOpacity=1
