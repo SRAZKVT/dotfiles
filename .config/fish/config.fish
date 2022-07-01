@@ -3,14 +3,24 @@ if status is-interactive
 end
 
 function fish_prompt -d "Write out the prompt"
-	printf 'The last command exited with code : [%s]\n[%s%s%s at %s%s%s in %s%s%s]%s\n-> ' $status \
+	printf 'The last command exited with code : [%s]\n[%s%s%s at %s%s%s in %s%s%s]%s\n-> ' \
+	$status \
 	(set_color c397d8) $USER (set_color normal) \
 	(set_color blue) $hostname (set_color normal) \
-	(set_color e7c547) (basename (pwd)) (set_color normal) \
+	(set_color e7c547) (__get_working_directory) (set_color normal) \
 	(__get_git_status)
 end
 
 function fish_greeting
+end
+
+function __get_working_directory
+	set -l wd (basename (pwd))
+	if test "$wd" = "$USER"
+		echo '~'
+	else
+		echo "$wd"
+	end
 end
 
 function __get_git_status
