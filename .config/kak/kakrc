@@ -17,9 +17,11 @@ evaluate-commands %sh{
 	if [ ${XDG_SESSION_TYPE} = 'x11' ]; then
 		# x11
 		echo "map global user y '<a-|>xclip -sel clip<ret>'"
+		echo "map global user p '!xclip -o -sel clip<ret>'"
 	else
 		# wayland
 		echo "map global user y '<a-|>wl-copy<ret>'"
+		echo "map global user p '!wl-paste<ret>'"
 	fi
 }
 
@@ -44,13 +46,20 @@ add-highlighter global/ wrap -word -indent -marker '  ->  '
 # Enable kak-lsp
 eval %sh{kak-lsp --kakoune -s $kak_session}
 lsp-enable
-lsp-auto-hover-enable
+
+# get info of selected on ,i
+map global user i ':lsp-hover<ret>'
 
 set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
 # Enable kak-lsp for go
 hook global BufWritePre .*[.]go %{
     try %{ lsp-code-action-sync '^Organize Imports$' }
+}
+
+hook global WinSetOption filetype=haskell %{
+	expandtab
+	set-option window lintcmd 'hlint'
 }
 
 hook global BufCreate .* %{
