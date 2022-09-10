@@ -1,14 +1,23 @@
 [language.go]
 filetypes = ["go"]
 roots = ["Gopkg.toml", "go.mod", ".git", ".hg"]
-command = "go-langserver"
-args = ["-mode", "stdio", "-gocodecompletion"]
+command = "gopls"
 
 [language.typescript]
 filetypes = ["typescript"]
 roots = [".git"]
 command = "deno"
 args = ["lsp"]
+
+[language.javascript]
+filetypes = ["javascript"]
+roots = ["package.json", ".git"]
+command = "javascript-typescript-stdio"
+
+[language.c_cpp]
+filetypes = ["c", "cpp"]
+roots = ["compile_commands.json", ".clangd", "Makefile", "build.sh"]
+command = "clangd"
 
 [language.typescript.settings.deno]
 enable = true
@@ -19,3 +28,28 @@ filetypes = ["haskell"]
 roots = ["Setup.hs", "stack.yaml", "*.cabal"]
 command = "haskell-language-server-wrapper"
 args = ["--lsp"]
+
+[language.rust]
+filetypes = ["rust"]
+roots = ["Cargo.toml"]
+command = "rust-analyzer"
+
+[language.php]
+filetypes = ["php"]
+roots = [".htaccess", "composer.json"]
+command = "intelephense"
+args = ["--stdio"]
+settings_section = "intelephense"
+[language.php.settings]
+intelephense.storagePath = "/tmp/intelephense"
+
+[language.bash]
+filetypes = ["sh"]
+roots = [".git", ".hg"]
+command = "bash-language-server"
+args = ["start"]
+
+[language.d]
+filetypes = ["d", "di"]
+roots = [".git", "dub.sdl", "dub.json"]
+command = "/home/sarah/third-party/serve-d"
